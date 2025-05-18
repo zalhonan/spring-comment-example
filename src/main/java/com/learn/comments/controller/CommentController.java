@@ -12,30 +12,45 @@ import java.util.List;
 public class CommentController {
 
     @PostMapping
-    public String postComment() {
-        return java.util.UUID.randomUUID().toString();
+    public Comment postComment() {
+        return Comment.builder()
+                .id(1000L)
+                .uuid("123")
+                .content("This is a comment")
+                .createdAt(java.time.LocalDateTime.now())
+                .build();
     }
 
     @GetMapping("/{uuid}")
     public Comment getCommentByUuid(@PathVariable String uuid) {
-        return Comment.builder().uuid(uuid).content("This is a comment").build();
+        return Comment.builder()
+                .id(1000L)
+                .uuid(uuid)
+                .content("This is a comment")
+                .createdAt(java.time.LocalDateTime.now())
+                .build();
     }
 
     @GetMapping
     public List<Comment> getAllComments() {
         return List.of(
-                Comment.builder().uuid("123").content("This is a comment").build(),
-                Comment.builder().uuid("456").content("This is another comment").build()
+         Comment.builder()
+                .id(1000L)
+                .uuid("uuid")
+                .content("This is a comment")
+                .createdAt(java.time.LocalDateTime.now())
+                .build(),
+         Comment.builder()
+                .id(1000L)
+                .uuid("uuid")
+                .content("This is a comment")
+                .createdAt(java.time.LocalDateTime.now())
+                .build()
         );
     }
 
-    @PutMapping("/{uuid}")
-    public String updateComment(@RequestParam String uuid) {
-        return String.format("Comment with UUID %s updated successfully.", uuid);
-    }
-
     @DeleteMapping("/{uuid}")
-    public String deleteComment(@RequestParam String uuid) {
+    public String deleteComment(@PathVariable String uuid) {
         return String.format("Comment with UUID %s deleted successfully.", uuid);
     }
 }

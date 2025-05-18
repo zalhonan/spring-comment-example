@@ -13,5 +13,5 @@ public class Comment {
     private Long id;
     private String uuid;
     private String content;
-
+    private java.time.LocalDateTime createdAt;
 }
