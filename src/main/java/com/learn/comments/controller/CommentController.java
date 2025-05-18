@@ -11,12 +11,9 @@ import java.util.List;
 @RequestMapping("/api/v1/comments")
 public class CommentController {
 
-    @GetMapping
-    public List<Comment> getAllComments() {
-        return List.of(
-                Comment.builder().uuid("123").content("This is a comment").build(),
-                Comment.builder().uuid("456").content("This is another comment").build()
-        );
+    @PostMapping
+    public String postComment() {
+        return java.util.UUID.randomUUID().toString();
     }
 
     @GetMapping("/{uuid}")
@@ -24,9 +21,12 @@ public class CommentController {
         return Comment.builder().uuid(uuid).content("This is a comment").build();
     }
 
-    @PostMapping
-    public String postComment() {
-        return java.util.UUID.randomUUID().toString();
+    @GetMapping
+    public List<Comment> getAllComments() {
+        return List.of(
+                Comment.builder().uuid("123").content("This is a comment").build(),
+                Comment.builder().uuid("456").content("This is another comment").build()
+        );
     }
 
     @PutMapping("/{uuid}")
