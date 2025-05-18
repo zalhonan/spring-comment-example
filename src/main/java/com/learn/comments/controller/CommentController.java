@@ -1,6 +1,7 @@
 package com.learn.comments.controller;
 
 import com.learn.comments.model.Comment;
+import com.learn.comments.service.CommentsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,47 +12,26 @@ import java.util.List;
 @RequestMapping("/api/v1/comments")
 public class CommentController {
 
+    private final CommentsService service;
+
     @PostMapping
-    public Comment postComment() {
-        return Comment.builder()
-                .id(1000L)
-                .uuid("123")
-                .content("This is a comment")
-                .createdAt(java.time.LocalDateTime.now())
-                .build();
+    public Comment saveComment(@RequestBody Comment comment) {
+        return service.saveComment(comment);
     }
 
     @GetMapping("/{uuid}")
     public Comment getCommentByUuid(@PathVariable String uuid) {
-        return Comment.builder()
-                .id(1000L)
-                .uuid(uuid)
-                .content("This is a comment")
-                .createdAt(java.time.LocalDateTime.now())
-                .build();
+        return service.getCommentByUuid(uuid);
     }
 
     @GetMapping
     public List<Comment> getAllComments() {
-        return List.of(
-         Comment.builder()
-                .id(1000L)
-                .uuid("uuid")
-                .content("This is a comment")
-                .createdAt(java.time.LocalDateTime.now())
-                .build(),
-         Comment.builder()
-                .id(1000L)
-                .uuid("uuid")
-                .content("This is a comment")
-                .createdAt(java.time.LocalDateTime.now())
-                .build()
-        );
+        return service.getAllComments();
     }
 
     @DeleteMapping("/{uuid}")
-    public String deleteComment(@PathVariable String uuid) {
-        return String.format("Comment with UUID %s deleted successfully.", uuid);
+    public Comment deleteComment(@PathVariable String uuid) {
+        return service.deleteComment(uuid);
     }
 }
 
