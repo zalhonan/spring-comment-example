@@ -8,9 +8,9 @@ public interface CommentsService {
 
     Comment saveComment(Comment comment);
 
-    Comment getCommentByUuid(String uuid);
+    Comment findCommentByUuid(String uuid);
 
-    List<Comment> getAllComments();
+    List<Comment> findAllComments();
 
     Comment deleteComment(String uuid);
 }

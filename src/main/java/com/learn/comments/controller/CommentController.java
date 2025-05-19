@@ -20,13 +20,13 @@ public class CommentController {
     }
 
     @GetMapping("/{uuid}")
-    public Comment getCommentByUuid(@PathVariable String uuid) {
-        return service.getCommentByUuid(uuid);
+    public Comment findCommentByUuid(@PathVariable String uuid) {
+        return service.findCommentByUuid(uuid);
     }
 
     @GetMapping
-    public List<Comment> getAllComments() {
-        return service.getAllComments();
+    public List<Comment> findAllComments() {
+        return service.findAllComments();
     }
 
     @DeleteMapping("/{uuid}")

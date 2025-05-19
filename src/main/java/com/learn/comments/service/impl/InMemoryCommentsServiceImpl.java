@@ -26,12 +26,12 @@ public class InMemoryCommentsServiceImpl implements CommentsService {
          return commentsRepository.saveComment(commentToSave);
      }
 
-     public Comment getCommentByUuid(String uuid) {
-         return commentsRepository.getCommentByUuid(uuid);
+     public Comment findCommentByUuid(String uuid) {
+         return commentsRepository.findCommentByUuid(uuid);
      }
 
-     public List<Comment> getAllComments() {
-         return commentsRepository.getAllComments();
+     public List<Comment> findAllComments() {
+         return commentsRepository.findAllComments();
      }
 
      public Comment deleteComment(String uuid) {

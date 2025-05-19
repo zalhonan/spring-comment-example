@@ -30,12 +30,12 @@ public class CommentsServiceImpl implements CommentsService {
     }
 
     @Override
-    public Comment getCommentByUuid(String uuid) {
+    public Comment findCommentByUuid(String uuid) {
         return repository.findCommentByUuid(uuid);
     }
 
     @Override
-    public List<Comment> getAllComments() {
+    public List<Comment> findAllComments() {
         return repository.findAll();
     }
 

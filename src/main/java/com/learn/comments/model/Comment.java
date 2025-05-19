@@ -1,9 +1,6 @@
 package com.learn.comments.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(indexes = {
+        @Index(name = "idx_comment_uuid", columnList = "uuid")
+})
 public class Comment {
     @Id
     @GeneratedValue

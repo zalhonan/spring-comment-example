@@ -16,11 +16,11 @@ public class InMemoryCommentsRepository {
         return comment;
     }
 
-    public Comment getCommentByUuid(String uuid) {
+    public Comment findCommentByUuid(String uuid) {
         return COMMENTS.get(uuid);
     }
 
-    public List<Comment> getAllComments() {
+    public List<Comment> findAllComments() {
         return COMMENTS.values().stream().toList();
     }
 
