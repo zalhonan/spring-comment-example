@@ -11,10 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/api/v1/comments")
 public class CommentController {
-    // TODO: connect to the database
-    // create work with db
-    // throw exception on not found records
-    // make swagger endpoint
 
     private final CommentsService service;
 
