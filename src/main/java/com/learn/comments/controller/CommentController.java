@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/v1/comments")
 public class CommentController {
     // TODO: connect to the database
-    // use .env file if possible
+    // create work with db
     // throw exception on not found records
     // make swagger endpoint
 
