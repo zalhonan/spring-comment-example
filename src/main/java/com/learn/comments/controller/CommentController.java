@@ -3,7 +3,9 @@ package com.learn.comments.controller;
 import com.learn.comments.model.Comment;
 import com.learn.comments.service.CommentsService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,7 +23,11 @@ public class CommentController {
 
     @GetMapping("/{uuid}")
     public Comment findCommentByUuid(@PathVariable String uuid) {
-        return service.findCommentByUuid(uuid);
+        Comment comment = service.findCommentByUuid(uuid);
+        if (comment == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Comment with UUID %s not found", uuid));
+        }
+        return comment;
     }
 
     @GetMapping
@@ -31,7 +37,11 @@ public class CommentController {
 
     @DeleteMapping("/{uuid}")
     public Comment deleteComment(@PathVariable String uuid) {
-        return service.deleteComment(uuid);
+        Comment comment = service.deleteComment(uuid);
+        if (comment == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Comment with UUID %s not found", uuid));
+        }
+        return comment;
     }
 }
 
